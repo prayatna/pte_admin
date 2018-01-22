@@ -1,16 +1,12 @@
 import React from 'react'
-import MenuList from './MenuLists';
-import { Row, Col} from 'reactstrap'
-import PropTypes from "prop-types";
+import AddSpeakingQuestion from '../containers/AddSpeakingQuestion'
 
 
 class ContentMainArea extends React.Component {
     render() {
         return (
             <div>
-
-                contents
-
+                <AddSpeakingQuestion/>
             </div>
 
         );
