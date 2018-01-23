@@ -6,11 +6,9 @@ import {fetchMenuItems, toggleSubMenu} from "../actions/menuAction";
 
 import {Container, Row, Col} from 'reactstrap';
 import Header from "../components/Header"
-import ContentMainArea from "../components/ContentMainArea"
 import {BrowserRouter as Router, Route} from 'react-router-dom'
 import Dashboard from "../components/Dashboard";
 import About from "../components/About";
-import * as actionTypes from '../actions/actionTypes';
 import AddSpeakingQuestion from "./AddSpeakingQuestion";
 // import addSpeaking from "../reducers/crudReducers";
 
@@ -21,6 +19,8 @@ class App extends Component {
         this.props.fetchMenuItems()
 
     }
+
+
 
     render() {
         const {toggleSubMenu, menuItems, subMenuCollapse} = this.props
@@ -42,7 +42,7 @@ class App extends Component {
                             </Col>
                             <Col>
                                 {/*<ContentMainArea/>*/}
-                                <AddSpeakingQuestion/>
+                                {/*<AddSpeakingQuestion/>*/}
 
                 {/*TODO iterata a component and enable toggle*/}
                                 {/*{Object.keys(menuItems.items).map((key, index) =>*/}
@@ -52,6 +52,7 @@ class App extends Component {
                                 {/*)}*/}
                                 <Route exact path="/" component={Dashboard}/>
                                 <Route path="/about" component={About}/>
+                                <Route path = "/speaking/add" component = {AddSpeakingQuestion}/>
 
                             </Col>
 

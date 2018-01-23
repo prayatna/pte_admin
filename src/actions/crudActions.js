@@ -6,10 +6,7 @@ export function postSpeakingQuestion(data) {
     return function (dispatch) {
         dispatch({type: types.POST_SPEAKING})
 
-        axios.post('http://pte.novasoftware.com.au:3000/api/speaking', {
-            data
-
-        })
+        axios.post('http://pte.novasoftware.com.au:3000/api/speaking', data)
             .then((response) => {
                 console.log(response);
                 dispatch({type: types.POST_SPEAKING_SUCCESS,

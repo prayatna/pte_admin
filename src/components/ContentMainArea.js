@@ -6,7 +6,9 @@ class ContentMainArea extends React.Component {
     render() {
         return (
             <div>
-                <AddSpeakingQuestion/>
+                {/*<AddSpeakingQuestion/>*/}
+this is Content MAIN AREA
+                {/*{this.props.allData.q_type}*/}
             </div>
 
         );
