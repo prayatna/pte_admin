@@ -1,9 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types'
-import {Nav, NavItem} from 'reactstrap'
 import 'font-awesome/css/font-awesome.min.css'
 import {Link} from 'react-router-dom'
 import SubMenuCollapse from './SubMenuCollapse'
+import classes from './MenuList.css'
+import SideMenuBar from "../../SideMenuBar";
 
 
 
@@ -11,15 +12,14 @@ class MenuList extends React.Component {
 
 
     static propTypes = {
-        menuItems: PropTypes.array.isRequired,
-        toggleSubMenu: PropTypes.func.isRequired
-    }
+        menuItems: PropTypes.array.isRequired
+    };
 
 
 
     render() {
 
-        const {menuItems} = this.props
+        const {menuItems} = this.props;
         const speakingQuestionsTypes = menuItems.filter(question => question.type === 'speaking')
         const readingQuestionTypes = menuItems.filter(question => question.type === 'reading')
 
@@ -37,23 +37,23 @@ class MenuList extends React.Component {
                 itemsInside: readingQuestionTypes
             }
         }
-
+console.log(this.props)
         return (
-            <div>
+            <div className="SideBar">
 
-                <p>Practice</p>
-                <Nav vertical>
+
+                <nav>
                     <Link to="/">Dashboard</Link>
                     <Link to="/about">About</Link>
 
-                    <NavItem>
+
                     {Object.keys(menuItemTitle).map((index, key) =>
                         <SubMenuCollapse key={key} contents={menuItemTitle[index]} />
                     )}
 
-                    </NavItem>
 
-                </Nav>
+
+                </nav>
             </div>
         )
     }
