@@ -11,7 +11,6 @@ import Dashboard from "../components/Dashboard";
 import About from "../components/About";
 // import AddSpeakingQuestion from "./AddSpeakingQuestion";
 import Speaking from '../components/Speaking/Speaking';
-import footer from 'App.css';
 
 class App extends Component {
 
@@ -22,6 +21,7 @@ class App extends Component {
 
     render() {
         const {menuItems} = this.props;
+        const speakingQuestionsTypes = menuItems.items.filter(question => question.type === 'speaking')
 
 
         return (
@@ -29,24 +29,21 @@ class App extends Component {
             <Router>
                 <div>
                     <Header/>
-                    <div>
-                        <div>
-                            <Col xs="2">
-
+                    <Container fluid>
+                        <Row>
+                            <Col xs="2" className="SideBar">
                                 <MenuList menuItems={menuItems.items}/>
-
                             </Col>
                             <Col>
-
                                 <Route exact path="/" component={Dashboard}/>
                                 <Route path="/about" component={About}/>
                                 {/*<Route path="/speaking/add" component={AddSpeakingQuestion}/>*/}
-                                <Route path="/speaking/" component = {Speaking}/>
 
+                                <Route path="/speaking/" render={()=><Speaking speakingQuestionsTypes= {speakingQuestionsTypes}/>}/>
                             </Col>
+                        </Row>
 
-                        </div>
-                    </div>
+                    </Container>
                 </div>
             </Router>
         )

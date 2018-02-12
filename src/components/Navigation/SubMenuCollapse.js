@@ -1,7 +1,7 @@
 import React from 'react';
-import {Collapse, NavItem} from 'reactstrap';
+import {Collapse} from 'reactstrap';
 import MenuListsItem from './MenuListsItem';
-import Item from './SubMenuCollapse.css';
+// import Item from './SubMenuCollapse.css';
 
 class SubMenuCollapse extends React.Component {
     constructor(props) {

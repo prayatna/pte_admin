@@ -8,7 +8,8 @@ class AddFormSpeaking extends Component {
         q_no: '',
         count_down: '',
         timer: '',
-        text: ''
+        text: '',
+        q_type_idq_type: '1'
     }
 
 
@@ -18,16 +19,25 @@ class AddFormSpeaking extends Component {
         })
     }
 
+    fileChange = (e) => {
+        const file = e.target.files[0];
+        this.setState({
+            file: file
+        })
+    }
+
     onSubmit = (e) => {
         e.preventDefault();
         console.log(this.state);
         this.props.getFormData(this.state);
+
         this.setState({
             file: '',
             q_no: '',
             count_down: '',
             timer: '',
-            text: ''
+            text: '',
+            q_type_idq_type:''
 
         });
     };
@@ -39,12 +49,20 @@ class AddFormSpeaking extends Component {
 
                 <Form encType="multipart/form-data">
                     <FormGroup>
+                        <Label for="q_type_idq_type">Read Aloud (RA)</Label>
+                        <Input type="text"
+                               name="q_type_idq_type"
+                               id="q_type_idq_type"
+                               placeholder="Read Aloud"
+                               defaultValue={this.state.q_type_idq_type}/>
+                    </FormGroup>
+                    <FormGroup>
                         <Label for="fileAttachment">File Attachment</Label>
                         <Input type="file"
                                name="file"
                                id="fileAttachment"
                                placeholder="with a placeholder"
-                                onChange={e => this.change(e)}
+                                onChange={e => this.fileChange(e)}
                         />
                     </FormGroup>
                     <FormGroup>
