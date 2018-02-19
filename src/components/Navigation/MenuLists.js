@@ -4,6 +4,7 @@ import 'font-awesome/css/font-awesome.min.css';
 import {Link} from 'react-router-dom';
 import SubMenuCollapse from './SubMenuCollapse';
 import {Nav} from 'reactstrap';
+import {withRouter} from 'react-router-dom';
 // import SideBar from './MenuList.css';
 
 
@@ -24,18 +25,20 @@ class MenuList extends React.Component {
         const menuItemTitle = {
             pteSpeaking: {
                 title: 'PTE Speaking',
+                type:'speaking',
                 itemsInside: speakingQuestionsTypes
             },
             pteReading: {
                 title: 'PTE Reading',
+                type:'reading',
                 itemsInside: readingQuestionTypes
             },
             pteWriting: {
                 title: 'PTE Writing',
+                type:'writing',
                 itemsInside: readingQuestionTypes
             }
         }
-        console.log(this.props);
 
         return (
             <div>
@@ -44,9 +47,12 @@ class MenuList extends React.Component {
                     <Link to="/">Dashboard</Link>
                     <Link to="/about">About</Link>
 
-
                     {Object.keys(menuItemTitle).map((index, key) =>
-                        <SubMenuCollapse key={key} contents={menuItemTitle[index]}/>
+                        <SubMenuCollapse
+                            key={key}
+                            contents={menuItemTitle[index]}
+
+                        />
                     )}
 
 
@@ -57,5 +63,5 @@ class MenuList extends React.Component {
 }
 
 
-export default MenuList;
+export default withRouter(MenuList);
 

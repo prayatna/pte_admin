@@ -13,11 +13,15 @@ getFormData = (fields) =>{
 }
 
     render() {
-
+console.log(this.props,"inside addspekaing");
+console.log(this.props.match.params)
         return (
             <div>
                 <h1>Add Speaking Question</h1>
-                <AddFormSpeaking getFormData = {fields => this.getFormData(fields)}/>
+                <AddFormSpeaking
+                    getFormData = {fields => this.getFormData(fields)}
+                    speakingType = {this.props.match.params.sectionType}
+                />
             </div>
 
         );

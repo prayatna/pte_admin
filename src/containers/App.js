@@ -6,7 +6,7 @@ import {fetchMenuItems} from "../actions/menuAction";
 
 import {Container, Row, Col} from 'reactstrap';
 import Header from "../components/Navigation/Header"
-import {BrowserRouter as Router, Route} from 'react-router-dom'
+import {BrowserRouter as Router, Route, Switch} from 'react-router-dom'
 import Dashboard from "../components/Dashboard";
 import About from "../components/About";
 // import AddSpeakingQuestion from "./AddSpeakingQuestion";
@@ -22,8 +22,6 @@ class App extends Component {
     render() {
         const {menuItems} = this.props;
         const speakingQuestionsTypes = menuItems.items.filter(question => question.type === 'speaking')
-
-
         return (
 
             <Router>
@@ -35,11 +33,13 @@ class App extends Component {
                                 <MenuList menuItems={menuItems.items}/>
                             </Col>
                             <Col>
-                                <Route exact path="/" component={Dashboard}/>
-                                <Route path="/about" component={About}/>
-                                {/*<Route path="/speaking/add" component={AddSpeakingQuestion}/>*/}
+                                <Switch>
+                                    <Route exact path="/" component={Dashboard}/>
+                                    <Route path="/about" component={About}/>
+                                    <Route path="/speaking" component={Speaking}/>
+                                    {/*<Route path="/speaking" render={()=><Speaking speakingQuestionsTypes= {speakingQuestionsTypes}/>}/>*/}
 
-                                <Route path="/speaking/" render={()=><Speaking speakingQuestionsTypes= {speakingQuestionsTypes}/>}/>
+                                </Switch>
                             </Col>
                         </Row>
 
