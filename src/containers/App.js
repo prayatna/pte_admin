@@ -1,17 +1,16 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types'
 import {connect} from 'react-redux';
-import MenuList from "../components/MenuLists";
-import {fetchMenuItems, toggleSubMenu} from "../actions/menuAction";
+import MenuList from "../components/Navigation/MenuLists";
+import {fetchMenuItems} from "../actions/menuAction";
 
 import {Container, Row, Col} from 'reactstrap';
-import Header from "../components/Header"
-import {BrowserRouter as Router, Route} from 'react-router-dom'
+import Header from "../components/Navigation/Header"
+import {BrowserRouter as Router, Route, Switch} from 'react-router-dom'
 import Dashboard from "../components/Dashboard";
 import About from "../components/About";
-import AddSpeakingQuestion from "./AddSpeakingQuestion";
-// import addSpeaking from "../reducers/crudReducers";
-
+// import AddSpeakingQuestion from "./AddSpeakingQuestion";
+import Speaking from '../components/Speaking/Speaking';
 
 class App extends Component {
 
@@ -20,12 +19,9 @@ class App extends Component {
 
     }
 
-
-
     render() {
-        const {toggleSubMenu, menuItems, subMenuCollapse} = this.props
-
-
+        const {menuItems} = this.props;
+        const speakingQuestionsTypes = menuItems.items.filter(question => question.type === 'speaking')
         return (
 
             <Router>
@@ -33,30 +29,20 @@ class App extends Component {
                     <Header/>
                     <Container fluid>
                         <Row>
-                            <Col xs="2">
-
-                                <MenuList menuItems={menuItems.items}
-                                toggleSubMenu={() => toggleSubMenu(subMenuCollapse.collapsed)}
-                                collapsed={subMenuCollapse.collapsed}/>
-
+                            <Col xs="2" className="SideBar">
+                                <MenuList menuItems={menuItems.items}/>
                             </Col>
                             <Col>
-                                {/*<ContentMainArea/>*/}
-                                {/*<AddSpeakingQuestion/>*/}
+                                <Switch>
+                                    <Route exact path="/" component={Dashboard}/>
+                                    <Route path="/about" component={About}/>
+                                    <Route path="/speaking" component={Speaking}/>
+                                    {/*<Route path="/speaking" render={()=><Speaking speakingQuestionsTypes= {speakingQuestionsTypes}/>}/>*/}
 
-                {/*TODO iterata a component and enable toggle*/}
-                                {/*{Object.keys(menuItems.items).map((key, index) =>*/}
-                                    {/*<SubMenuCollapse key={index} menuItems={menuItems.items[key]}*/}
-                                                     {/*toggleSubMenu={() => toggleSubMenu(subMenuCollapse.collapsed)}*/}
-                                                     {/*collapsed={subMenuCollapse.collapsed === menuItems.items[key]}/>*/}
-                                {/*)}*/}
-                                <Route exact path="/" component={Dashboard}/>
-                                <Route path="/about" component={About}/>
-                                <Route path = "/speaking/add" component = {AddSpeakingQuestion}/>
-
+                                </Switch>
                             </Col>
-
                         </Row>
+
                     </Container>
                 </div>
             </Router>
@@ -66,23 +52,18 @@ class App extends Component {
 
 App.propTypes = {
     menuItems: PropTypes.object.isRequired,
-    toggleSubMenu: PropTypes.func.isRequired,
 
 }
 
 function mapStateToProps(state) {
-    const {menuItems, subMenuCollapse} = state
+    const {menuItems} = state
     return {
         menuItems: menuItems,
-        subMenuCollapse: subMenuCollapse,
     }
 }
 
 function mapDispatchToProps(dispatch) {
     return {
-        toggleSubMenu: (collapsed) => {
-            dispatch(toggleSubMenu(collapsed))
-        },
         fetchMenuItems: () => {
             dispatch(fetchMenuItems())
         }
