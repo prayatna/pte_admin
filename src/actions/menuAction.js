@@ -26,7 +26,3 @@ export function toggleSubMenu(collapsed) {
     }
 }
 
-
-//add questions
-
-//delete questions  can be added here later or create a separate file

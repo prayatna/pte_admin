@@ -1,26 +1,29 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import { postSpeakingQuestion } from "../actions/crudActions";
+import {postSpeakingQuestion} from "../actions/crudActions";
 import AddFormSpeaking from "../components/Speaking/AddFormSpeaking";
 
 
 class AddSpeakingQuestion extends React.Component {
 
-getFormData = (fields) =>{
-    console.log("App got fields", fields);
-    this.props.onAddSpeaking(fields)
 
-}
+    getFormData = (fields) => {
+        console.log("App got fields", fields);
+        this.props.onAddSpeaking(fields)
+
+    }
+
 
     render() {
-console.log(this.props,"inside addspekaing");
-console.log(this.props.match.params)
+        const speakingProps = this.props.speakingQuestionsProps
+
         return (
             <div>
-                <h1>Add Speaking Question</h1>
+                <h1>Add {speakingProps.speakingTitle} Question</h1>
                 <AddFormSpeaking
-                    getFormData = {fields => this.getFormData(fields)}
-                    speakingType = {this.props.match.params.sectionType}
+                    getFormData={fields => this.getFormData(fields)}
+                    speakingProps = {speakingProps}
+
                 />
             </div>
 

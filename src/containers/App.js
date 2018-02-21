@@ -36,8 +36,8 @@ class App extends Component {
                                 <Switch>
                                     <Route exact path="/" component={Dashboard}/>
                                     <Route path="/about" component={About}/>
-                                    <Route path="/speaking" component={Speaking}/>
-                                    {/*<Route path="/speaking" render={()=><Speaking speakingQuestionsTypes= {speakingQuestionsTypes}/>}/>*/}
+                                    {/*<Route path="/speaking" component={Speaking}/>*/}
+                                    <Route path="/speaking/:id" render={()=><Speaking speakingQuestionsTypes= {speakingQuestionsTypes}/>}/>
 
                                 </Switch>
                             </Col>

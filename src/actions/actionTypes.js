@@ -12,3 +12,12 @@ export const TOGGLE_SUBMENU_VISIBILITY = 'TOGGLE_SUBMENU_VISIBILITY'
 export const POST_SPEAKING = 'POST_SPEAKING'
 export const POST_SPEAKING_SUCCESS = 'POST_SPEAKING_SUCCESS'
 export const POST_SPEAKING_FAIL = 'POST_SPEAKING_FAIL'
+
+
+
+//Action for Fetching/ GET Speaking Questions with question type eg. read aloud, repeat sentence etc.
+export const GET_SPEAKING_RA = 'GET_SPEAKING_RA'
+export const GET_SPEAKING_RA_SUCCESS = 'GET_SPEAKING_RA_SUCCESS'
+export const GET_SPEAKING_RA_FAIL = 'GET_SPEAKING_RA_FAIL'
+
+

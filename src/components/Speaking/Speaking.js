@@ -1,13 +1,19 @@
 import React, {Component} from 'react';
 import AddSpeakingQuestion from '../../containers/AddSpeakingQuestion';
-import { Route, Link} from 'react-router-dom';
+import {Route, Link, withRouter} from 'react-router-dom';
+import DisplaySpeakingQuestions from '../../containers/DisplaySpeakingQuestions';
 
 
 class Speaking extends Component {
 
     state = {
-        showAdd: false
+        showAdd: false,
     };
+
+    speakingProps = {
+        speakingTitle: '',
+        speakingId: ''
+    }
 
     addQuestionHandler = () => {
         this.setState({
@@ -16,46 +22,63 @@ class Speaking extends Component {
 
     };
 
+    getSpeakingQuestionType = () => {
+        const match = this.props.match;
+        const speakingQuestion = this.props.speakingQuestionsTypes;
+        for (let i = 0; i < speakingQuestion.length; i++) {
+            if (speakingQuestion[i].idq_type.toString() === match.params.id) {
+                    this.speakingProps.speakingTitle = speakingQuestion[i].q_type;
+                    this.speakingProps.speakingId = i+1;
+
+            }
+        }
+    }
+
     render() {
-        // const speaking = this.props.speakingQuestionsTypes;
+        this.getSpeakingQuestionType();
         const match = this.props.match;
         const location = this.props.location;
 
-
-        // console.log(this.props, "inside speaking component");
-        if (this.state.showAdd) {
-            return (<div>
-                    <div>
-                        <h1>Speaking: RA/RS/RL/ASQ </h1>
-                        <Route path={`${match.url}/:sectionType`} component={AddSpeakingQuestion}/>
-                        {/*<AddSpeakingQuestion/>*/}
-                    </div>
-                </div>
-            );
-        }
-        else if(!this.state.showAdd && location.pathname !== match.url) {
+        if (!this.state.showAdd) {
             return (
                 <div>
-                    <h1>Speaking: RA/RS/RL/ASQ </h1>
-                    <Link to={`${location.pathname}/add`}>
-                        <button onClick={this.addQuestionHandler}>ADD Question</button>
-                    </Link>
+                    <div>
+                        <h1>Speaking: {this.speakingProps.speakingTitle} </h1>
+                        <Link to={`${location.pathname}/add`}>
+                            <button onClick={this.addQuestionHandler}>ADD Question</button>
+                        </Link>
+                        <div>
+                            <DisplaySpeakingQuestions questionTypeId = {this.speakingProps.speakingId}/>
 
-                    <div>List of Questions[readaloud/repeat sentence/ retell lecture/ answer short question]</div>
-                    <div>Description of a question [Detail]</div>
+                        </div>
+                        <div>Description of a question [Detail]</div>
+
+
+                        {/*<Route path={`${match.url}/`} component={AddSpeakingQuestion}/>*/}
+                    </div>
+
                 </div>
-            );
 
+
+            );
         }
 
-        else{
-            return(
+        if(this.state.showAdd){
+            return (
                 <div>
                     <div>
-                        <h1>Speaking: RA/RS/RL/ASQ </h1>
+                        <h1>Speaking Section</h1>
+                        <Link to={`${match.url}`}>
+                            <button onClick={this.addQuestionHandler}>ADD Question</button>
+                        </Link>
+                        {/*<Route path={`${match.url}/`} component={AddSpeakingQuestion}/>*/}
+                        <Route path={`${match.url}/`} render={()=><AddSpeakingQuestion speakingQuestionsProps= {this.speakingProps}/>}/>
 
                     </div>
+
                 </div>
+
+
             );
         }
 
@@ -64,4 +87,4 @@ class Speaking extends Component {
 
 }
 
-export default Speaking;
+export default withRouter(Speaking);

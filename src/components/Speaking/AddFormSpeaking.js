@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {Form, FormGroup, Input, Label, Button, Col} from 'reactstrap';
 
+// TODO: pass form data through Redux
 
 class AddFormSpeaking extends Component {
     state = {
@@ -9,10 +10,11 @@ class AddFormSpeaking extends Component {
         count_down: '',
         timer: '',
         text: '',
-        q_type_idq_type: this.props.speakingType,
-        sample_answer:''
+        q_type_idq_type: this.props.speakingProps.speakingId,
+        sample_answer:'',
+        speakingId: '',
+        speakingTitle: ''
     }
-
 
     change = (e) => {
         this.setState({
@@ -74,12 +76,14 @@ class AddFormSpeaking extends Component {
 
 
     render() {
+        console.log(this.props.speakingProps.speakingTitle);
+
         return (
             <div>
 
                 <Form encType="multipart/form-data">
                     <FormGroup>
-                        <Label for="q_type_idq_type">Read Aloud (RA)</Label>
+                        <Label for="q_type_idq_type">{this.props.speakingProps.speakingTitle}</Label>
                         <Input type="text"
                                name="q_type_idq_type"
                                id="q_type_idq_type"

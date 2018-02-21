@@ -7,7 +7,6 @@ import {Link} from 'react-router-dom';
 class SubMenuCollapse extends React.Component {
     constructor(props) {
         super(props);
-
         this.toggle = this.toggle.bind(this);
         this.state = {collapse: false};
     }
@@ -21,12 +20,11 @@ class SubMenuCollapse extends React.Component {
 
         return (
             <div>
-                {/*TODO: change link dynamically. Current state just links to speaking add*/}
                 <li onClick={this.toggle} className="Item">
-                    <Link to={`/${content.type}`}>
+                    {/*<Link to={`/${content.type}/`}>*/}
                         {content.title}    &nbsp;    &nbsp;
                         <i className="fa fa-caret-down"></i>
-                    </Link>
+                    {/*</Link>*/}
                 </li>
 
                 <Collapse isOpen={this.state.collapse}>

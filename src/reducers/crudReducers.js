@@ -11,12 +11,16 @@ const initialState = {
     // formItem: [],
     isPosting: false,
     posted: false,
+    isFetching: false,
+    fetched: false,
+    speakingQuestions: [],
+    error: ''
 
 }
 
-const addSpeaking = (state = initialState, action) => {
+export function addSpeaking (state = initialState, action) {
 
-    switch (action.types) {
+    switch (action.type) {
         case actionTypes.POST_SPEAKING:
             return {
                 ...state,
@@ -43,4 +47,32 @@ const addSpeaking = (state = initialState, action) => {
 
 }
 
-export default addSpeaking
+
+export function speakingQuestions(state = initialState, action) {
+
+    switch (action.type) {
+
+        case actionTypes.GET_SPEAKING_RA:
+            return {
+                ...state,
+                isFetching: true,
+            }
+
+        case actionTypes.GET_SPEAKING_RA_SUCCESS:
+            return {
+                ...state,
+                fetched: true,
+                isFetching: false,
+                speakingQuestions: action.payload,
+            }
+        case actionTypes.GET_SPEAKING_RA_FAIL:
+            return {
+                ...state,
+                fetched: false,
+                error: action.payload
+            }
+
+        default:
+            return state
+    }
+}

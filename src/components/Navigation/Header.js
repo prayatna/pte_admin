@@ -1,12 +1,12 @@
 import React from 'react';
-import {Navbar, NavbarBrand} from 'reactstrap'
+import { Navbar, NavbarBrand } from 'reactstrap'
 
 
-const header = ()=> (
+const header = () => (
 
-        <Navbar color = "faded" light  >
-            <NavbarBrand href="/" className="mr-auto">PTE</NavbarBrand>
-        </Navbar>
+    <Navbar color="faded" light>
+        <NavbarBrand href="/" className="mr-auto">PTE</NavbarBrand>
+    </Navbar>
 
 
 );
