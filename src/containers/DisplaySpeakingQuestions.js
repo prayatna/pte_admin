@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { getSpeakingQuestion } from '../actions/crudActions';
 import { connect } from 'react-redux';
-import TableView from '../components/TableView';
+import TableView from '../components/Speaking/TableView';
 import PropTypes from "prop-types";
 
 class DisplaySpeakingQuestions extends Component {
@@ -16,17 +16,18 @@ class DisplaySpeakingQuestions extends Component {
         const state = this.props.speakingQuestions;
         const questions = this.props.speakingQuestions.speakingQuestions;
 
-        if(state.isFetching && !state.fetched){
+        if(!state.isFetching && state.fetched){
             return (
-                <div>Loading</div>
+                <TableView
+                    questions = {questions}
+                />
             )
         }
         else{
             return(
+                // TODO: Add a loading spinner
                 <div>
-                    <TableView
-                    questions = {questions}
-                    />
+                   Loading...
                 </div>
             );
         }

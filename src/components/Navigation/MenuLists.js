@@ -1,20 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import 'font-awesome/css/font-awesome.min.css';
-import {Link} from 'react-router-dom';
+import {NavLink, withRouter} from 'react-router-dom';
 import SubMenuCollapse from './SubMenuCollapse';
-import {Nav} from 'reactstrap';
-import {withRouter} from 'react-router-dom';
-// import SideBar from './MenuList.css';
+import {Nav, NavItem} from 'reactstrap';
+import './MenuList.css';
 
 
 class MenuList extends React.Component {
 
-
     static propTypes = {
         menuItems: PropTypes.array.isRequired
     };
-
 
     render() {
 
@@ -24,28 +20,33 @@ class MenuList extends React.Component {
 
         const menuItemTitle = {
             pteSpeaking: {
+                id: 1,
                 title: 'PTE Speaking',
-                type:'speaking',
+                type: 'speaking',
                 itemsInside: speakingQuestionsTypes
             },
             pteReading: {
+                id: 2,
                 title: 'PTE Reading',
-                type:'reading',
+                type: 'reading',
                 itemsInside: readingQuestionTypes
             },
             pteWriting: {
+                id: 3,
                 title: 'PTE Writing',
-                type:'writing',
+                type: 'writing',
                 itemsInside: readingQuestionTypes
             }
         }
 
-        return (
-            <div>
 
+        return (
+            <div className= "side-nav-container">
                 <Nav vertical>
-                    <Link to="/">Dashboard</Link>
-                    <Link to="/about">About</Link>
+                    <NavItem ><NavLink to="/">Dashboard</NavLink></NavItem>
+
+                    <NavItem ><NavLink to="/about">About</NavLink></NavItem>
+
 
                     {Object.keys(menuItemTitle).map((index, key) =>
                         <SubMenuCollapse
@@ -58,6 +59,8 @@ class MenuList extends React.Component {
 
                 </Nav>
             </div>
+
+
         )
     }
 }

@@ -1,15 +1,17 @@
-import React from 'react';
-import {Collapse} from 'reactstrap';
+import React, {Component} from 'react';
+import {Collapse, NavItem} from 'reactstrap';
 import MenuListsItem from './MenuListsItem';
-import Item from './SubMenuCollapse.css';
-import {Link} from 'react-router-dom';
+import './SubMenuCollapse.css';
+import 'font-awesome/css/font-awesome.min.css';
 
-class SubMenuCollapse extends React.Component {
+class SubMenuCollapse extends Component{
     constructor(props) {
         super(props);
         this.toggle = this.toggle.bind(this);
         this.state = {collapse: false};
     }
+
+
 
     toggle() {
         this.setState({collapse: !this.state.collapse});
@@ -20,15 +22,15 @@ class SubMenuCollapse extends React.Component {
 
         return (
             <div>
-                <li onClick={this.toggle} className="Item">
+                <NavItem onClick={this.toggle} className="item">
                     {/*<Link to={`/${content.type}/`}>*/}
-                        {content.title}    &nbsp;    &nbsp;
-                        <i className="fa fa-caret-down"></i>
+                    <a href="#">{content.title}</a>   &nbsp;    &nbsp;
+                    <i className="fa fa-caret-down" style={{color:"darkgrey"}}></i>
                     {/*</Link>*/}
-                </li>
+                </NavItem>
 
                 <Collapse isOpen={this.state.collapse}>
-                    <ul className="Item">
+                    <ul >
                         {content.itemsInside.map(questionLst => (
                             <MenuListsItem
                                 key={questionLst.idq_type}

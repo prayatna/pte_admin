@@ -1,14 +1,15 @@
 import React from 'react';
-import { Navbar, NavbarBrand } from 'reactstrap'
+import {Navbar} from 'react-bootstrap';
 
 
 const header = () => (
-
-    <Navbar color="faded" light>
-        <NavbarBrand href="/" className="mr-auto">PTE</NavbarBrand>
-    </Navbar>
-
-
+        <Navbar fixedTop collapseOnSelect fluid>
+            <Navbar.Header>
+                <Navbar.Brand>
+                    <a href="/">PTE</a>
+                </Navbar.Brand>
+            </Navbar.Header>
+        </Navbar>
 );
 
 export default header;

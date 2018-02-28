@@ -1,13 +1,18 @@
 import React from 'react';
-import {Link} from 'react-router-dom';
-const menuListsItem  =  (props) => (
+import {NavLink} from 'react-router-dom';
+import './MenuListItem.css';
 
-    <li>
+const menuListsItem = (props) => (
+
+
+    <li className="sub-item">
 
         {/*<Link to = "/speaking" key={props.passedKey}>{props.listName}</Link>*/}
-        <Link to ={`/${props.questionType}/${props.passedKey}`} key = {props.passedKey}>{props.listName}</Link>
+        <NavLink to ={`/${props.questionType}/${props.passedKey}`} key = {props.passedKey}>{props.listName}</NavLink>
         {/*{console.log(props,"inside menulist check router")}*/}
     </li>
+
+
 
 
 );

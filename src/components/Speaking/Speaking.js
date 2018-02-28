@@ -27,8 +27,8 @@ class Speaking extends Component {
         const speakingQuestion = this.props.speakingQuestionsTypes;
         for (let i = 0; i < speakingQuestion.length; i++) {
             if (speakingQuestion[i].idq_type.toString() === match.params.id) {
-                    this.speakingProps.speakingTitle = speakingQuestion[i].q_type;
-                    this.speakingProps.speakingId = i+1;
+                this.speakingProps.speakingTitle = speakingQuestion[i].q_type;
+                this.speakingProps.speakingId = i + 1;
 
             }
         }
@@ -48,7 +48,7 @@ class Speaking extends Component {
                             <button onClick={this.addQuestionHandler}>ADD Question</button>
                         </Link>
                         <div>
-                            <DisplaySpeakingQuestions questionTypeId = {this.speakingProps.speakingId}/>
+                            <DisplaySpeakingQuestions questionTypeId={this.speakingProps.speakingId}/>
 
                         </div>
                         <div>Description of a question [Detail]</div>
@@ -63,18 +63,17 @@ class Speaking extends Component {
             );
         }
 
-        if(this.state.showAdd){
+        if (this.state.showAdd) {
             return (
-                <div>
-                    <div>
-                        <h1>Speaking Section</h1>
-                        <Link to={`${match.url}`}>
-                            <button onClick={this.addQuestionHandler}>ADD Question</button>
-                        </Link>
-                        {/*<Route path={`${match.url}/`} component={AddSpeakingQuestion}/>*/}
-                        <Route path={`${match.url}/`} render={()=><AddSpeakingQuestion speakingQuestionsProps= {this.speakingProps}/>}/>
 
-                    </div>
+                <div>
+                    <h1>Speaking Section</h1>
+                    <Link to={`${match.url}`}>
+                        <button onClick={this.addQuestionHandler}>ADD Question</button>
+                    </Link>
+                    {/*<Route path={`${match.url}/`} component={AddSpeakingQuestion}/>*/}
+                    <Route path={`${match.url}/`}
+                           render={() => <AddSpeakingQuestion speakingQuestionsProps={this.speakingProps}/>}/>
 
                 </div>
 

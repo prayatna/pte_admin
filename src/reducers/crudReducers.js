@@ -13,12 +13,18 @@ const initialState = {
     posted: false,
     isFetching: false,
     fetched: false,
-    speakingQuestions: [],
     error: ''
 
 }
 
-export function addSpeaking (state = initialState, action) {
+const speakingInitialState = {
+    isFetching: false,
+    fetched: false,
+    speakingQuestions: [],
+    error: ''
+}
+
+export function addSpeaking(state = initialState, action) {
 
     switch (action.type) {
         case actionTypes.POST_SPEAKING:
@@ -48,7 +54,7 @@ export function addSpeaking (state = initialState, action) {
 }
 
 
-export function speakingQuestions(state = initialState, action) {
+export function speakingQuestions(state = speakingInitialState, action) {
 
     switch (action.type) {
 

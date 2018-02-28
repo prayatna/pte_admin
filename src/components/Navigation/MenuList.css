@@ -1,5 +1,19 @@
-.SideBar{
-    height: 720px;
-    background: #f1f1f1;
-    display: block;
+
+.side-nav-container{
+    position: fixed;
+    background: #2A363D;
+    width:inherit;
+    height:100%;
+
 }
+
+.side-nav-container a{
+    color: #96b5ba;
+}
+
+.side-nav-container a:hover{
+    /*color: #d67590;*/
+    color:black;
+}
+
+

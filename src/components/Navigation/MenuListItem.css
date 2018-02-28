@@ -1,0 +1,17 @@
+.sub-item{
+     list-style-type: none;
+ }
+
+
+.sub-item a {
+    display: block;
+    /*color: #000;*/
+    padding: 10px 15px;
+    text-decoration: none;
+}
+
+ /*Change the link color on hover */
+.sub-item a:hover {
+    background-color: #EEEEEE;
+}
+
