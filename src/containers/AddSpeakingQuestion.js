@@ -21,24 +21,27 @@ class AddSpeakingQuestion extends React.Component {
         return (
             <Container fluid>
                 <Row>
-                    <h1>Add {speakingProps.speakingTitle} Question</h1>
                     <Col xs="12" sm="6">
                         <Card>
-                            <CardHeader tag="h3">Add {speakingProps.speakingTitle}</CardHeader>
+                            <CardHeader>Add {speakingProps.speakingTitle}</CardHeader>
                             <CardBody>
-                               test
+                                <AddFormSpeaking
+                                    getFormData={fields => this.getFormData(fields)}
+                                    speakingProps={speakingProps}
+
+                                />
                             </CardBody>
 
                         </Card>
-                        <AddFormSpeaking
-                            getFormData={fields => this.getFormData(fields)}
-                            speakingProps={speakingProps}
 
-                        />
 
                     </Col>
                     <Col xs="12" sm="6">
-                        Details of form
+                        <Card>
+                            <CardHeader>Details of form</CardHeader>
+                            <CardBody> you can add any thing in this section/ may include description of form fields </CardBody>
+                        </Card>
+
                     </Col>
 
                 </Row>

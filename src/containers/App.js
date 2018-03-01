@@ -34,7 +34,7 @@ class App extends Component {
                             <MenuList menuItems={menuItems.items}/>
                         </Col>
 
-                        <Col  md={{size:10, offset: 2 }}>
+                        <Col  md={{size:10, offset: 2 }} className="main-body">
                             <Switch>
                                 <Route exact path="/" component={Dashboard}/>
                                 <Route path="/about" component={About}/>

@@ -2,9 +2,8 @@ import React, {Component} from 'react';
 import AddSpeakingQuestion from '../../containers/AddSpeakingQuestion';
 import {Route, Link, withRouter} from 'react-router-dom';
 import DisplaySpeakingQuestions from '../../containers/DisplaySpeakingQuestions';
-import {Container, Row, Col, Card, CardTitle} from 'reactstrap';
+import {Container, Row, Col, Card, CardHeader, CardBody, Button} from 'reactstrap';
 import './Speaking.css';
-
 
 class Speaking extends Component {
 
@@ -41,32 +40,37 @@ class Speaking extends Component {
         const match = this.props.match;
         const location = this.props.location;
 
+        //TODO: find a better way to use it as a template rather than rendering same thing with just if condition
+
         if (!this.state.showAdd) {
             return (
                 <div>
-                    <Container fluid >
+                    <Container fluid>
                         <Row>
-                        <h1>Speaking: {this.speakingProps.speakingTitle} </h1>
-                            <br/>
-                        <Link to={`${location.pathname}/add`}>
-                            <button onClick={this.addQuestionHandler}>ADD Question</button>
-                        </Link>
-                        <div className="main-body">
-                            <Col md="6">
-                                <Card>
-                                    <CardTitle> List of Questions</CardTitle>
-                                <DisplaySpeakingQuestions questionTypeId={this.speakingProps.speakingId}/>
-                                </Card>
+                            <Col>
+                                <h3>Speaking: {this.speakingProps.speakingTitle} </h3>
+                            </Col>
+                            <Col>
+                                <Link to={`${location.pathname}/add`}>
+                                    <Button color="info" onClick={this.addQuestionHandler}>ADD Question</Button>
+                                </Link>
                             </Col>
 
-                            <Col md="5">Other Display</Col>
-
-                        </div>
-                        <div>Description of a question [Detail]</div>
+                        </Row>
+                        <Row>
+                        <Col>
+                            <Card>
+                                <CardHeader tag="h6"> List of Questions</CardHeader>
+                                <CardBody>
+                                    <DisplaySpeakingQuestions questionTypeId={this.speakingProps.speakingId}/>
+                                </CardBody>
+                            </Card>
+                        </Col>
+                        </Row>
 
 
                         {/*<Route path={`${match.url}/`} component={AddSpeakingQuestion}/>*/}
-                        </Row>
+
                     </Container>
 
                 </div>
@@ -79,14 +83,28 @@ class Speaking extends Component {
             return (
 
                 <div>
-                    <h1>Speaking Section</h1>
-                    <Link to={`${match.url}`}>
-                        <button onClick={this.addQuestionHandler}>ADD Question</button>
-                    </Link>
-                    {/*<Route path={`${match.url}/`} component={AddSpeakingQuestion}/>*/}
-                    <Route path={`${match.url}/`}
-                           render={() => <AddSpeakingQuestion speakingQuestionsProps={this.speakingProps}/>}/>
+                    <Container fluid>
+                        <Row>
+                            <Col>
+                                <h3>Speaking Section</h3>
+                            </Col>
+                            <Col>
+                                <Link to={`${match.url}`}>
+                                    <Button color="danger" onClick={this.addQuestionHandler}>X</Button>
+                                </Link>
+                            </Col>
+                        </Row>
+                        <Row>
+                            <Col>
+                                <Route path={`${match.url}/`}
+                                       render={() => <AddSpeakingQuestion
+                                           speakingQuestionsProps={this.speakingProps}/>}/>
 
+                            {/*<Route path={`${match.url}/`} component={AddSpeakingQuestion}/>*/}
+
+                            </Col>
+                        </Row>
+                    </Container>
                 </div>
 
 
