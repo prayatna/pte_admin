@@ -1,16 +1,7 @@
-.App{
-
+.side-nav{
+    padding: 0px;
+    height: 100%;
+    background-color: #2A363D;
+    position: fixed;
 }
 
-.app-body{
-}
-
-.main {
-    /*!*margin-left: 160px; !* Same as the width of the sidenav *!*!*/
-    /*font-size: 14px; !* Increased text to enable scrolling *!*/
-    /*padding: 0px 10px;*/
-}
-
-.sidebar{
-
-}

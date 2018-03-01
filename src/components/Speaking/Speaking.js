@@ -2,6 +2,8 @@ import React, {Component} from 'react';
 import AddSpeakingQuestion from '../../containers/AddSpeakingQuestion';
 import {Route, Link, withRouter} from 'react-router-dom';
 import DisplaySpeakingQuestions from '../../containers/DisplaySpeakingQuestions';
+import {Container, Row, Col, Card, CardTitle} from 'reactstrap';
+import './Speaking.css';
 
 
 class Speaking extends Component {
@@ -42,20 +44,30 @@ class Speaking extends Component {
         if (!this.state.showAdd) {
             return (
                 <div>
-                    <div>
+                    <Container fluid >
+                        <Row>
                         <h1>Speaking: {this.speakingProps.speakingTitle} </h1>
+                            <br/>
                         <Link to={`${location.pathname}/add`}>
                             <button onClick={this.addQuestionHandler}>ADD Question</button>
                         </Link>
-                        <div>
-                            <DisplaySpeakingQuestions questionTypeId={this.speakingProps.speakingId}/>
+                        <div className="main-body">
+                            <Col md="6">
+                                <Card>
+                                    <CardTitle> List of Questions</CardTitle>
+                                <DisplaySpeakingQuestions questionTypeId={this.speakingProps.speakingId}/>
+                                </Card>
+                            </Col>
+
+                            <Col md="5">Other Display</Col>
 
                         </div>
                         <div>Description of a question [Detail]</div>
 
 
                         {/*<Route path={`${match.url}/`} component={AddSpeakingQuestion}/>*/}
-                    </div>
+                        </Row>
+                    </Container>
 
                 </div>
 

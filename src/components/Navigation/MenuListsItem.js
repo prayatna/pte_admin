@@ -4,7 +4,7 @@ import './MenuListItem.css';
 
 const menuListsItem = (props) => (
 
-
+    //TODO: style the selected link as an active link (similar to Dashboard and About button in sidebar
     <li className="sub-item">
 
         {/*<Link to = "/speaking" key={props.passedKey}>{props.listName}</Link>*/}

@@ -1,19 +1,28 @@
 
-.side-nav-container{
-    position: fixed;
+.side-nav-container {
     background: #2A363D;
-    width:inherit;
-    height:100%;
-
+    z-index: 1019;
+    height: 100vh;
+    text-decoration: none;
 }
 
-.side-nav-container a{
-    color: #96b5ba;
+.side-nav-container a {
+    color: #d3d3d3;
+    text-decoration: none;
 }
 
-.side-nav-container a:hover{
+.side-nav-container ul > li {
+    padding: 10px 15px;
+}
+
+.side-nav-container ul > li:hover {
+    background-color: #2CA9D6;
+}
+
+.side-nav-container li a:hover {
     /*color: #d67590;*/
-    color:black;
+    color: #ffffff;
+    text-decoration: none;
 }
 
 

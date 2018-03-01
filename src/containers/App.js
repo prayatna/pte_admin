@@ -4,12 +4,11 @@ import {connect} from 'react-redux';
 import MenuList from "../components/Navigation/MenuLists";
 import {fetchMenuItems} from "../actions/menuAction";
 
-import {Grid, Col, Row} from 'react-bootstrap'
+import {Container, Col, Row} from 'reactstrap'
 import Header from "../components/Navigation/Header"
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom'
 import Dashboard from "../components/Dashboard";
 import About from "../components/About";
-// import AddSpeakingQuestion from "./AddSpeakingQuestion";
 import Speaking from '../components/Speaking/Speaking';
 import './App.css';
 
@@ -28,14 +27,14 @@ class App extends Component {
             <Router>
                 <div>
                     <Header/>
-                    <Grid fluid style={{paddingTop: "50px"}}>
+                    <Container fluid>
 
                         <Row>
-                        <Col xs={6} md={2} style={{padding: "0px"}}>
+                        <Col md="2" className="side-nav" style={{position: "fixed", padding:"0px"}}>
                             <MenuList menuItems={menuItems.items}/>
                         </Col>
 
-                        <Col xs={6} md={10}>
+                        <Col  md={{size:10, offset: 2 }}>
                             <Switch>
                                 <Route exact path="/" component={Dashboard}/>
                                 <Route path="/about" component={About}/>
@@ -45,7 +44,7 @@ class App extends Component {
                             </Switch>
                         </Col>
                         </Row>
-                    </Grid>
+                    </Container>
 
                 </div>
             </Router>

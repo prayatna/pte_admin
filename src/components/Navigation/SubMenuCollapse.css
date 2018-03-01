@@ -5,10 +5,10 @@
 }
 
 .item:hover{
-    background-color: #EEEEEE;
+    background-color: #2CA9D6;
 }
 
-.item>a{
+.item a{
     text-decoration: none;
-    color:#c2cfd6
+    color:#efefef
 }

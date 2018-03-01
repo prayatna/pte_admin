@@ -23,11 +23,12 @@ class SubMenuCollapse extends Component{
         return (
             <div>
                 <NavItem onClick={this.toggle} className="item">
-                    {/*<Link to={`/${content.type}/`}>*/}
+                    {/*/!*<Link to={`/${content.type}/`}>*!/*/}
                     <a href="#">{content.title}</a>   &nbsp;    &nbsp;
                     <i className="fa fa-caret-down" style={{color:"darkgrey"}}></i>
-                    {/*</Link>*/}
+                    {/*/!*</Link>*!/*/}
                 </NavItem>
+
 
                 <Collapse isOpen={this.state.collapse}>
                     <ul >

@@ -2,8 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {NavLink, withRouter} from 'react-router-dom';
 import SubMenuCollapse from './SubMenuCollapse';
-import {Nav, NavItem} from 'reactstrap';
+import {Nav, NavItem, Col} from 'reactstrap';
 import './MenuList.css';
+import 'font-awesome/css/font-awesome.min.css';
 
 
 class MenuList extends React.Component {
@@ -41,9 +42,9 @@ class MenuList extends React.Component {
 
 
         return (
-            <div className= "side-nav-container">
-                <Nav vertical>
-                    <NavItem ><NavLink to="/">Dashboard</NavLink></NavItem>
+            <Col md="12" className="side-nav-container" style={{padding:"0px"}}>
+                <Nav vertical >
+                    <NavItem ><NavLink to="/"><i className="fa fa-tachometer" style={{color:"darkgrey"}}></i> Dashboard</NavLink></NavItem>
 
                     <NavItem ><NavLink to="/about">About</NavLink></NavItem>
 
@@ -58,7 +59,7 @@ class MenuList extends React.Component {
 
 
                 </Nav>
-            </div>
+            </Col>
 
 
         )
