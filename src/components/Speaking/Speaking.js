@@ -30,15 +30,16 @@ class Speaking extends Component {
             if (speakingQuestion[i].idq_type.toString() === match.params.id) {
                 this.speakingProps.speakingTitle = speakingQuestion[i].q_type;
                 this.speakingProps.speakingId = i + 1;
-
             }
         }
+
     }
 
     render() {
         this.getSpeakingQuestionType();
         const match = this.props.match;
         const location = this.props.location;
+        console.log("Speaking component");
 
         //TODO: find a better way to use it as a template rather than rendering same thing with just if condition
 

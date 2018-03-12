@@ -3,6 +3,7 @@ import { getSpeakingQuestion } from '../actions/crudActions';
 import { connect } from 'react-redux';
 import TableView from '../components/Speaking/TableView';
 import PropTypes from "prop-types";
+import {withRouter} from 'react-router-dom';
 
 class DisplaySpeakingQuestions extends Component {
 
@@ -23,11 +24,15 @@ class DisplaySpeakingQuestions extends Component {
                 />
             )
         }
+
+        else if(state.spe){
+
+        }
         else{
             return(
                 // TODO: Add a loading spinner
                 <div>
-                   Loading...
+                    Loading...
                 </div>
             );
         }
@@ -60,4 +65,4 @@ function mapDispatchToProps(dispatch) {
 
 }
 
-export default connect(mapStateToProps,mapDispatchToProps)(DisplaySpeakingQuestions);
+export default withRouter(connect(mapStateToProps,mapDispatchToProps)(DisplaySpeakingQuestions));
