@@ -1,16 +1,20 @@
-import React from 'react';
-import {Collapse} from 'reactstrap';
+import React, {Component} from 'react';
+import {Collapse, NavItem} from 'reactstrap';
 import MenuListsItem from './MenuListsItem';
-import Item from './SubMenuCollapse.css';
-import {Link} from 'react-router-dom';
+import './SubMenuCollapse.css';
+import 'font-awesome/css/font-awesome.min.css';
 
-class SubMenuCollapse extends React.Component {
+
+//Collapsible component for sidebar
+
+class SubMenuCollapse extends Component{
     constructor(props) {
         super(props);
-
         this.toggle = this.toggle.bind(this);
         this.state = {collapse: false};
     }
+
+//Used a toggle from Reactstrap
 
     toggle() {
         this.setState({collapse: !this.state.collapse});
@@ -21,16 +25,16 @@ class SubMenuCollapse extends React.Component {
 
         return (
             <div>
-                {/*TODO: change link dynamically. Current state just links to speaking add*/}
-                <li onClick={this.toggle} className="Item">
-                    <Link to={`/${content.type}`}>
-                        {content.title}    &nbsp;    &nbsp;
-                        <i className="fa fa-caret-down"></i>
-                    </Link>
-                </li>
+                <NavItem onClick={this.toggle} className="item">
+                    {/*/!*<Link to={`/${content.type}/`}>*!/*/}
+                    <a href="#">{content.title}</a>   &nbsp;    &nbsp;
+                    <i className="fa fa-caret-down" style={{color:"darkgrey"}}></i>
+                    {/*/!*</Link>*!/*/}
+                </NavItem>
 
+                {/*Collapsible items are toggled from here*/}
                 <Collapse isOpen={this.state.collapse}>
-                    <ul className="Item">
+                    <ul >
                         {content.itemsInside.map(questionLst => (
                             <MenuListsItem
                                 key={questionLst.idq_type}

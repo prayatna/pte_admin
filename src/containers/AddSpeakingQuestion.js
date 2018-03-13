@@ -1,28 +1,54 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import { postSpeakingQuestion } from "../actions/crudActions";
+import {postSpeakingQuestion} from "../actions/crudActions";
 import AddFormSpeaking from "../components/Speaking/AddFormSpeaking";
+import {Container, Row, Col, Card, CardHeader, CardBody} from 'reactstrap';
 
-
+//container which handles Add Question through form.
 class AddSpeakingQuestion extends React.Component {
 
-getFormData = (fields) =>{
-    console.log("App got fields", fields);
-    this.props.onAddSpeaking(fields)
 
-}
+    getFormData = (fields) => {
+        console.log("AddSpeakingQuestion got fields", fields);
+        this.props.onAddSpeaking(fields)
+
+    }
+
 
     render() {
-console.log(this.props,"inside addspekaing");
-console.log(this.props.match.params)
+        const speakingProps = this.props.speakingQuestionsProps
+
         return (
-            <div>
-                <h1>Add Speaking Question</h1>
-                <AddFormSpeaking
-                    getFormData = {fields => this.getFormData(fields)}
-                    speakingType = {this.props.match.params.sectionType}
-                />
-            </div>
+            <Container fluid>
+                <Row>
+                    <Col xs="12" sm="6">
+                        <Card>
+                            <CardHeader>Add {speakingProps.speakingTitle}</CardHeader>
+                            <CardBody>
+
+                                {/*main form page is rendered here*/}
+                                <AddFormSpeaking
+                                    getFormData={fields => this.getFormData(fields)}
+                                    speakingProps={speakingProps}
+
+                                />
+                            </CardBody>
+
+                        </Card>
+
+
+                    </Col>
+                    <Col xs="12" sm="6">
+                        <Card>
+                            <CardHeader>Details of form</CardHeader>
+                            <CardBody> you can add any thing in this section/ may include description of form fields </CardBody>
+                        </Card>
+
+                    </Col>
+
+                </Row>
+
+            </Container>
 
         );
     }

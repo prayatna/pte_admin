@@ -1,6 +1,9 @@
 import React, {Component} from 'react';
-import {Form, FormGroup, Input, Label, Button, Col} from 'reactstrap';
+import {Form, FormGroup, Input, Label, Button} from 'reactstrap';
 
+//form component
+
+// TODO: pass form data through Redux
 
 class AddFormSpeaking extends Component {
     state = {
@@ -9,10 +12,11 @@ class AddFormSpeaking extends Component {
         count_down: '',
         timer: '',
         text: '',
-        q_type_idq_type: this.props.speakingType,
-        sample_answer:''
+        q_type_idq_type: this.props.speakingProps.speakingId,
+        sample_answer: '',
+        speakingId: '',
+        speakingTitle: ''
     }
-
 
     change = (e) => {
         this.setState({
@@ -22,7 +26,7 @@ class AddFormSpeaking extends Component {
 
     fileChange = (e) => {
 
-        for(let size=0; size < e.target.files.length; size++){
+        for (let size = 0; size < e.target.files.length; size++) {
             console.log('Selected file:', e.target.files[size]);
             let file = e.target.files[size];
             console.log("uploading screenshot file...", file);
@@ -32,22 +36,21 @@ class AddFormSpeaking extends Component {
             // Do necessary request to upload here.......
 
         }
-        // this.setState({
-        //     [e.target.name]: e.target.files[0]
 
-        // })
-        // const file = e.target.files[0];
-        // const sampleAnswer = e.target.files[1];
-        // this.setState({
-        //     file: file,
-        //     sample_answer: sampleAnswer
-        // })
     }
 
     onSubmit = (e) => {
-        console.log(e)
+
+        //NOTE: no any confirmation is shown if the form has been succeffuly submitted.
+        // just used console.log to see if it was successful
+
+        //TODO: after form submit redirect to previous page/ list of questions page
+
+        console.log(e);
         e.preventDefault();
         console.log(this.state);
+
+        //always append form data by creating a new FormData else the File upload feature won;t work properly
         let data = new FormData();
         data.append('file', this.state.file);
         data.append('q_no', this.state.q_no);
@@ -74,17 +77,22 @@ class AddFormSpeaking extends Component {
 
 
     render() {
+        console.log(this.props.speakingProps.speakingTitle);
+
+        //TODO: Input Validation
         return (
             <div>
 
                 <Form encType="multipart/form-data">
                     <FormGroup>
-                        <Label for="q_type_idq_type">Read Aloud (RA)</Label>
-                        <Input type="text"
+
+                        <Label for="q_type_idq_type">{this.props.speakingProps.speakingTitle}</Label>
+                        <Input plaintext
                                name="q_type_idq_type"
                                id="q_type_idq_type"
-                               placeholder="Speaking Question Type Id"
-                               defaultValue={this.state.q_type_idq_type}/>
+                               defaultValue={this.state.q_type_idq_type}>
+                            Id: {this.state.q_type_idq_type}
+                        </Input>
                     </FormGroup>
                     <FormGroup>
                         <Label for="fileAttachment">File Attachment</Label>
@@ -141,9 +149,7 @@ class AddFormSpeaking extends Component {
                     </FormGroup>
 
                     <FormGroup check row>
-                        <Col>
-                            <Button onClick={(e) => this.onSubmit(e)} type="submit" color="success">Submit</Button>
-                        </Col>
+                        <Button onClick={(e) => this.onSubmit(e)} type="submit" color="success">Submit</Button>
                     </FormGroup>
                 </Form>
 

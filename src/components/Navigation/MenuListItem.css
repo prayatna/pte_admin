@@ -1,0 +1,15 @@
+.sub-item{
+     list-style-type: none;
+ }
+
+
+.sub-item a {
+    display: block;
+    text-decoration: none;
+}
+
+ /*Change the link color on hover */
+.sub-item a:hover {
+    background-color: #2CA9D6;
+}
+

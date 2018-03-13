@@ -3,14 +3,13 @@ import PropTypes from 'prop-types'
 import {connect} from 'react-redux';
 import MenuList from "../components/Navigation/MenuLists";
 import {fetchMenuItems} from "../actions/menuAction";
-
-import {Container, Row, Col} from 'reactstrap';
+import {Container, Col, Row} from 'reactstrap'
 import Header from "../components/Navigation/Header"
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom'
 import Dashboard from "../components/Dashboard";
 import About from "../components/About";
-// import AddSpeakingQuestion from "./AddSpeakingQuestion";
 import Speaking from '../components/Speaking/Speaking';
+import './App.css';
 
 class App extends Component {
 
@@ -20,8 +19,10 @@ class App extends Component {
     }
 
     render() {
-        const {menuItems} = this.props;
-        const speakingQuestionsTypes = menuItems.items.filter(question => question.type === 'speaking')
+
+        const {menuItems} = this.props; //get menu items for sidebar as props to pass it into Navigation> MenuList component
+
+        const speakingQuestionsTypes = menuItems.items.filter(question => question.type === 'speaking');
         return (
 
             <Router>
@@ -29,21 +30,24 @@ class App extends Component {
                     <Header/>
                     <Container fluid>
                         <Row>
-                            <Col xs="2" className="SideBar">
+                            {/*SideBar starts*/}
+                            <Col md="2" className="side-nav" style={{position: "fixed", padding: "0px"}}>
                                 <MenuList menuItems={menuItems.items}/>
                             </Col>
-                            <Col>
+
+                            {/*Main Body starts*/}
+                            <Col md={{size: 10, offset: 2}} className="main-body">
                                 <Switch>
                                     <Route exact path="/" component={Dashboard}/>
                                     <Route path="/about" component={About}/>
-                                    <Route path="/speaking" component={Speaking}/>
-                                    {/*<Route path="/speaking" render={()=><Speaking speakingQuestionsTypes= {speakingQuestionsTypes}/>}/>*/}
-
+                                    {/*<Route path="/speaking" component={Speaking}/>*/}
+                                    <Route path="/speaking/:id"
+                                           render={() => <Speaking speakingQuestionsTypes={speakingQuestionsTypes}/>}/>
                                 </Switch>
                             </Col>
                         </Row>
-
                     </Container>
+
                 </div>
             </Router>
         )
@@ -53,15 +57,18 @@ class App extends Component {
 App.propTypes = {
     menuItems: PropTypes.object.isRequired,
 
-}
+};
+
 
 function mapStateToProps(state) {
-    const {menuItems} = state
+    const {menuItems} = state;
     return {
         menuItems: menuItems,
     }
 }
 
+
+//dispatches redux menuAation.js action
 function mapDispatchToProps(dispatch) {
     return {
         fetchMenuItems: () => {
