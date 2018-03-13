@@ -3,6 +3,7 @@ import {NavLink} from 'react-router-dom';
 import './MenuListItem.css';
 
 const menuListsItem = (props) => (
+// each individual menulist item are rendered from here
 
     //TODO: style the selected link as an active link
     <li className="sub-item">

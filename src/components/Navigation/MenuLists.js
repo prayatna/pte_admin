@@ -19,6 +19,7 @@ class MenuList extends React.Component {
         const speakingQuestionsTypes = menuItems.filter(question => question.type === 'speaking')
         const readingQuestionTypes = menuItems.filter(question => question.type === 'reading')
 
+        //Titles are not in the backend so created an object with the necessary details to show up in the side menu
         const menuItemTitle = {
             pteSpeaking: {
                 id: 1,
@@ -42,13 +43,14 @@ class MenuList extends React.Component {
 
 
         return (
+            // Side Menu
             <Col md="12" className="side-nav-container" style={{padding:"0px"}}>
                 <Nav vertical >
                     <NavItem ><NavLink to="/"><i className="fa fa-tachometer" style={{color:"darkgrey"}}></i> Dashboard</NavLink></NavItem>
 
                     <NavItem ><NavLink to="/about">About</NavLink></NavItem>
 
-
+                    {/*displaying objects with titles*/}
                     {Object.keys(menuItemTitle).map((index, key) =>
                         <SubMenuCollapse
                             key={key}

@@ -4,6 +4,9 @@ import MenuListsItem from './MenuListsItem';
 import './SubMenuCollapse.css';
 import 'font-awesome/css/font-awesome.min.css';
 
+
+//Collapsible component for sidebar
+
 class SubMenuCollapse extends Component{
     constructor(props) {
         super(props);
@@ -11,7 +14,7 @@ class SubMenuCollapse extends Component{
         this.state = {collapse: false};
     }
 
-
+//Used a toggle from Reactstrap
 
     toggle() {
         this.setState({collapse: !this.state.collapse});
@@ -29,7 +32,7 @@ class SubMenuCollapse extends Component{
                     {/*/!*</Link>*!/*/}
                 </NavItem>
 
-
+                {/*Collapsible items are toggled from here*/}
                 <Collapse isOpen={this.state.collapse}>
                     <ul >
                         {content.itemsInside.map(questionLst => (

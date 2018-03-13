@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
 import {Form, FormGroup, Input, Label, Button} from 'reactstrap';
 
+//form component
+
 // TODO: pass form data through Redux
 
 class AddFormSpeaking extends Component {
@@ -39,11 +41,16 @@ class AddFormSpeaking extends Component {
 
     onSubmit = (e) => {
 
+        //NOTE: no any confirmation is shown if the form has been succeffuly submitted.
+        // just used console.log to see if it was successful
+
         //TODO: after form submit redirect to previous page/ list of questions page
 
-        console.log(e)
+        console.log(e);
         e.preventDefault();
         console.log(this.state);
+
+        //always append form data by creating a new FormData else the File upload feature won;t work properly
         let data = new FormData();
         data.append('file', this.state.file);
         data.append('q_no', this.state.q_no);

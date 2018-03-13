@@ -23,6 +23,8 @@ class Speaking extends Component {
 
     };
 
+
+// keep info of speaking question type to use later
     getSpeakingQuestionType = () => {
         const match = this.props.match;
         const speakingQuestion = this.props.speakingQuestionsTypes;
@@ -37,11 +39,12 @@ class Speaking extends Component {
 
     render() {
         this.getSpeakingQuestionType();
+
+        //to get the routes working we need match info and location info
         const match = this.props.match;
         const location = this.props.location;
-        console.log("Speaking component");
 
-        //TODO: find a better way to use it as a template rather than rendering same thing with just if condition
+        //TODO: find a better way to use it as a template rather than rendering same thing with just IF condition
 
         if (!this.state.showAdd) {
             return (
@@ -63,7 +66,7 @@ class Speaking extends Component {
                             <Card>
                                 <CardHeader tag="h6"> List of Questions</CardHeader>
                                 <CardBody>
-                                    <DisplaySpeakingQuestions questionTypeId={this.speakingProps.speakingId}/>
+                                    <DisplaySpeakingQuestions questionTypeId={match.params.id}/>
                                 </CardBody>
                             </Card>
                         </Col>
@@ -80,7 +83,7 @@ class Speaking extends Component {
             );
         }
 
-        if (this.state.showAdd) {
+        else{
             return (
 
                 <div>
@@ -90,6 +93,8 @@ class Speaking extends Component {
                                 <h3>Speaking Section</h3>
                             </Col>
                             <Col>
+
+                                {/*Close button for the form*/}
                                 <Link to={`${match.url}`}>
                                     <Button color="danger" onClick={this.addQuestionHandler}>X</Button>
                                 </Link>
@@ -97,6 +102,7 @@ class Speaking extends Component {
                         </Row>
                         <Row>
                             <Col>
+                                {/*TODO: idea: maybe create a backdrop to add a question*/}
                                 <Route path={`${match.url}/`}
                                        render={() => <AddSpeakingQuestion
                                            speakingQuestionsProps={this.speakingProps}/>}/>

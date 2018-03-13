@@ -4,12 +4,12 @@ import {postSpeakingQuestion} from "../actions/crudActions";
 import AddFormSpeaking from "../components/Speaking/AddFormSpeaking";
 import {Container, Row, Col, Card, CardHeader, CardBody} from 'reactstrap';
 
-
+//container which handles Add Question through form.
 class AddSpeakingQuestion extends React.Component {
 
 
     getFormData = (fields) => {
-        console.log("App got fields", fields);
+        console.log("AddSpeakingQuestion got fields", fields);
         this.props.onAddSpeaking(fields)
 
     }
@@ -25,6 +25,8 @@ class AddSpeakingQuestion extends React.Component {
                         <Card>
                             <CardHeader>Add {speakingProps.speakingTitle}</CardHeader>
                             <CardBody>
+
+                                {/*main form page is rendered here*/}
                                 <AddFormSpeaking
                                     getFormData={fields => this.getFormData(fields)}
                                     speakingProps={speakingProps}
