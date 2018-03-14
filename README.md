@@ -1,8 +1,8 @@
-##PTE Admin Panel
+## PTE Admin Panel
 The PTE Admin Panel is built using ReactJS with Redux and styled using bootstrap 4 (Reactstrap). This application connects
 to the backend using RESTful API.
 
-###Folder Structure
+### Folder Structure
 
 ```
 .
@@ -28,7 +28,7 @@ to the backend using RESTful API.
   
 ```
 
-###Development Environment
+### Development Environment
 Make sure you have npm installed in you machine.
 `cd` to the directory of the project. `npm install` so that all the dependencies are installed into your project before you run it
 `npm start` to start you local development server. It will redirect to `localhost:3000` where you can see the app running.
